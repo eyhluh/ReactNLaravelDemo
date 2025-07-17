@@ -48,7 +48,7 @@ const AppHeader = () => {
             </a>
           </div>
 
-          {/* Profile Menu */}
+`          {/* Profile Menu */}`
           <div className="relative">
             <button
               onClick={() => setDropdownOpen((prev) => !prev)}
