@@ -1,3 +1,14 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./style.css";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+
 // import { StrictMode } from "react";
 // import { createRoot } from "react-dom/client";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -24,14 +35,3 @@
 //     </BrowserRouter>
 //   </StrictMode>
 // );
-
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
-import './style.css'
-
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
