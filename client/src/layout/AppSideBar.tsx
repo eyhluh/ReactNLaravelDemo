@@ -2,10 +2,35 @@ import { useSidebar } from "../context/SidebarContext";
 import { Link } from "react-router-dom";
 
 const menuItems = [
-  { label: "Gender List", path: "/genders" },
-  { label: "Add Gender", path: "/add-gender" },
-  { label: "User List", path: "/users" },
-  { label: "Add User", path: "/add-user" },
+  {
+    label: "Gender List",
+    path: "/genders",
+    icon: (
+      <svg
+        className="w-5 h-5"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 2a6 6 0 1 0 6 6 6.006 6.006 0 0 0-6-6Zm0 10a4 4 0 1 1 4-4 4.005 4.005 0 0 1-4 4Zm6.586 1.414a1 1 0 0 1 0 1.414L15.414 18H17a1 1 0 0 1 0 2h-4a1 1 0 0 1-1-1v-4a1 1 0 0 1 2 0v1.586l3.586-3.586a1 1 0 0 1 1.414 0Z" />
+      </svg>
+    ),
+  },
+
+  {
+    label: "User List",
+    path: "/users",
+    icon: (
+      <svg
+        className="w-5 h-5"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 12a5 5 0 1 0-5-5 5.006 5.006 0 0 0 5 5Zm0 2c-3.315 0-10 1.66-10 5v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-3c0-3.34-6.685-5-10-5Z" />
+      </svg>
+    ),
+  },
 ];
 
 const AppSidebar = () => {
@@ -34,7 +59,9 @@ const AppSidebar = () => {
                   to={item.path}
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                 >
-                  <span className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></span>
+                  <span className="text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                    {item.icon}
+                  </span>
                   <span className="ms-3">{item.label}</span>
                 </Link>
               </li>
