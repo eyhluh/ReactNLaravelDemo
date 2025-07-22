@@ -3,7 +3,15 @@ import AppLayout from "../layout/AppLayout";
 import GenderMainPage from "../pages/Gender/GenderMainPage";
 import EditGenderPage from "../pages/Gender/EditGenderPage";
 import DeleteGenderPage from "../pages/Gender/EditGenderPage";
+import AddGenderForm from "../pages/Gender/components/AddGenderForm";
 
+const SampleComponent = () => {
+    return (
+        <>
+        <AddGenderForm />
+        </>
+    )
+}
 const AppRoutes = () => {
     return (
         <>

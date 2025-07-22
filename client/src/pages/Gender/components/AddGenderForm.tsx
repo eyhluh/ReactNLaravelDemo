@@ -8,7 +8,7 @@ const AddGenderForm = () => {
         label="Gender" 
         type="text" 
         name="gender"/>
-        <SubmitButton label="Save Gender" className="w-full" />
+        <SubmitButton label="Save Gender" />
     </>
   )
 }
