@@ -14,3 +14,4 @@ const AddGenderForm = () => {
 }
 
 export default AddGenderForm;
+
