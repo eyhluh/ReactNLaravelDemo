@@ -1,7 +1,22 @@
+import BackButton from "../../../components/button/BackButton";
+import SubmitButton from "../../../components/button/SubmitButton";
+import FloatingLabelInput from "../../../components/input/FloatingLabelInput";
+
 const EditGenderForm = () => {
   return (
-    <div>EditGenderForm</div>
-  )
-}
+    <>
+      <form>
+        <div className="mb-4">
+          <FloatingLabelInput label="Gender" type="text" name="gender" />
+        </div>
 
-export default EditGenderForm
+        <div className="flex justify-end gap-2">
+          <BackButton label="Back" path="/" />
+          <SubmitButton label="Save Gender" />
+        </div>
+      </form>
+    </>
+  );
+};
+
+export default EditGenderForm;

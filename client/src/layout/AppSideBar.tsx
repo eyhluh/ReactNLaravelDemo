@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSidebar } from "../context/SidebarContext";
+import { useSidebar } from "../contexts/SidebarContext";
 
 const AppSidebar = () => {
   const { isOpen, toggleSidebar } = useSidebar();

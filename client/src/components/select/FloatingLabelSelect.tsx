@@ -2,13 +2,13 @@ import type { ChangeEvent, FC, ReactNode } from "react";
 
 interface FloatingLabelSelectProps {
   label: string;
-  name?: string;
-  value?: string;
-  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   selectClassName?: string;
   newSelectClassName?: string;
   labelClassName?: string;
   newLabelClassName?: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   required?: boolean;
   autoFocus?: boolean;
   disabled?: boolean;
@@ -18,12 +18,12 @@ interface FloatingLabelSelectProps {
 const FloatingLabelSelect: FC<FloatingLabelSelectProps> = ({
   label,
   name,
-  value,
-  onChange,
   selectClassName,
   newSelectClassName,
   labelClassName,
   newLabelClassName,
+  value,
+  onChange,
   required,
   autoFocus,
   disabled,
@@ -44,7 +44,6 @@ const FloatingLabelSelect: FC<FloatingLabelSelectProps> = ({
           }`}
           autoFocus={autoFocus}
           disabled={disabled}
-          required={required}
         >
           {children}
         </select>
