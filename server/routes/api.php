@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\GenderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GenderController;
 
-Route::middleware('api')->group(function () {
-    Route::get('/genders', [GenderController::class, 'index']);
+Route::controller(GenderController::class)->prefix('/gender')->group(function () {
+    Route::post('/storeGender', 'storeGender');
 });
+
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
