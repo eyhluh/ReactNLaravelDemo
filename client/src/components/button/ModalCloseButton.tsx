@@ -1,3 +1,5 @@
+import type { FC } from "react";
+
 interface ModalCloseButtonProps {
   onClose: () => void;
 }
