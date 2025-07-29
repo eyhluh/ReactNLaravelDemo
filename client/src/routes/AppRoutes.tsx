@@ -3,6 +3,7 @@ import AppLayout from "../layout/AppLayout";
 import GenderMainPage from "../pages/Gender/GenderMainPage";
 import EditGenderPage from "../pages/Gender/EditGenderPage";
 import DeleteGenderPage from "../pages/Gender/DeleteGenderPage";
+import UserMainPage from "../pages/User/UserMainPage";
 
 const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
           <Route path="/" element={<GenderMainPage />} />
           <Route path="/gender/edit" element={<EditGenderPage />} />
           <Route path="/gender/delete" element={<DeleteGenderPage />} />
+          <Route path="/users" element={<UserMainPage />} />
         </Route>
       </Routes>
     </>
