@@ -4,46 +4,42 @@ import FloatingLabelInput from "../../../components/input/FloatingLabelInput";
 import GenderService from "../../../services/GenderService";
 
 interface AddGenderFormProps {
-  onGenderAdded: (message: string) => void
+  onGenderAdded: (message: string) => void;
 }
 
 const AddGenderForm: FC<AddGenderFormProps> = () => {
-  const [loadingStore, setLoadingStore] = useState(false)
-  const [gender, setGender] = useState("")
+  const [loadingStore, setLoadingStore] = useState(false);
+  const [gender, setGender] = useState("");
 
-  const handleStoreGender =async (e: FormEvent) => {
+  const handleStoreGender = async (e: FormEvent) => {
     try {
-      e.preventDefault()
+      e.preventDefault();
 
-      setLoadingStore(true)
+      setLoadingStore(true);
 
-      const res = await GenderService.storeGender(gender)
+      const res = await GenderService.storeGender(gender);
 
-      if(res.status === 200) {
-        setGender('')
-        onGenderAdded(res.data.message)
+      if (res.status === 200) {
+        setGender("");
+        onGenderAdded(res.data.message);
       } else {
-        console.error('Unexpected error occured during store gender')
+        console.error("Unexpected error occured during store gender");
       }
-    } catch(error: any) {
-      if(error.response && error.response.status === 422) {
-
+    } catch (error: any) {
+      if (error.response && error.response.status === 422) {
       } else {
-        
       }
-
     }
-
-  }
+  };
   return (
     <>
-    <form>
-      <div className="mb-4">
-      <FloatingLabelInput label="Gender" type="text" name="gender" />
-      </div>
-      <div className="flex justify-end">
-      <SubmitButton label="Save Gender" className="mt-4" />
-      </div>
+      <form>
+        <div className="mb-4">
+          <FloatingLabelInput label="Gender" type="text" name="gender" />
+        </div>
+        <div className="flex justify-end">
+          <SubmitButton label="Save Gender" className="mt-4" />
+        </div>
       </form>
     </>
   );
