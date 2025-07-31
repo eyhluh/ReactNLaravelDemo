@@ -12,7 +12,7 @@ const AppSidebar = () => {
     },
     {
       icon: "",
-      path: "#",
+      path: "/users",
       name: "User List",
     },
   ];

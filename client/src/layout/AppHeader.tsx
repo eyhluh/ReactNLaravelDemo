@@ -61,11 +61,11 @@ const AppHeader = () => {
                     data-dropdown-toggle="dropdown-user"
                   >
                     <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                      alt="user photo"
-                    />
+                    <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                      <span className="font-medium text-gray-600 dark:text-gray-300">
+                        EV
+                      </span>
+                    </div>
                   </button>
                 </div>
                 <div
@@ -76,13 +76,13 @@ const AppHeader = () => {
                 >
                   <div className="px-4 py-3" role="none">
                     <p className="text-sm text-gray-900" role="none">
-                      No Name
+                      Ella Danielle Villeza
                     </p>
                     <p
                       className="text-sm font-medium text-gray-900 truncate"
                       role="none"
                     >
-                      email.com
+                      ella@email.com
                     </p>
                   </div>
                   <ul className="py-1" role="none">

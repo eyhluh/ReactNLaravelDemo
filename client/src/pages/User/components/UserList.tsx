@@ -5,7 +5,7 @@ import {
   TableCell,
   TableHeader,
   TableRow,
-} from "../../../components/Table";
+} from "../../../components/table";
 
 interface UserListProps {
   onAddUser: () => void;
