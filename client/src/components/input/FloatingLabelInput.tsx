@@ -3,48 +3,50 @@ import type { ChangeEvent, FC } from "react";
 interface FloatingLabelInputProps {
   label: string;
   type: "text" | "date" | "password";
-  inputClassName?: string;
-  newInputClassName?: string;
-  labelClassName?: string;
-  newLabelClassName?: string;
   name: string;
-  value?: any;
+  value?: string | any;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  newLabelClassName?: string;
+  labelClassName?: string;
+  newInputClassName?: string;
+  inputClassName?: string;
   required?: boolean;
   autoFocus?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
+  errors?: string[];
 }
 
 const FloatingLabelInput: FC<FloatingLabelInputProps> = ({
   label,
   type,
-  inputClassName,
-  newInputClassName,
-  labelClassName,
-  newLabelClassName,
   name,
   value,
   onChange,
+  newLabelClassName,
+  labelClassName,
+  newInputClassName,
+  inputClassName,
   required,
   autoFocus,
   disabled,
   readOnly,
+  errors,
 }) => {
   return (
     <>
       <div className="relative">
         <input
           type={type}
-          name={name}
           id={name}
+          name={name}
           value={value}
           onChange={onChange}
           className={`${
             newInputClassName
               ? newInputClassName
               : `block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer ${inputClassName}`
-          } `}
+          }`}
           placeholder=" "
           autoFocus={autoFocus}
           disabled={disabled}
@@ -62,6 +64,9 @@ const FloatingLabelInput: FC<FloatingLabelInputProps> = ({
           {required && <span className="text-red-600 ml-1">*</span>}
         </label>
       </div>
+      {errors && errors.length > 0 && (
+        <span className="text-red-600 text-xs">{errors[0]}</span>
+      )}
     </>
   );
 };

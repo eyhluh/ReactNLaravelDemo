@@ -1,5 +1,5 @@
 import { useEffect, useRef, type FC, type ReactNode } from "react";
-import ModalCloseButton from "../button/ModalCloseButton";
+import ModalCloseButton from "../Button/ModalCloseButton";
 
 interface ModalProps {
   isOpen: boolean;
@@ -7,7 +7,7 @@ interface ModalProps {
   className?: string;
   children: ReactNode;
   showCloseButton?: boolean;
-  isFullscreen?: boolean;
+  isFullScreen?: boolean;
 }
 
 const Modal: FC<ModalProps> = ({
@@ -16,7 +16,7 @@ const Modal: FC<ModalProps> = ({
   className,
   children,
   showCloseButton,
-  isFullscreen,
+  isFullScreen,
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -26,9 +26,9 @@ const Modal: FC<ModalProps> = ({
     }
   };
 
-  const contentClasses = isFullscreen
+  const contentClasses = isFullScreen
     ? "relative w-full h-full rounded-lg bg-white flex flex-col"
-    : "relative w-full sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-lg bg-white max-h[90vh] flex flex-col";
+    : "relative w-full sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-lg bg-white max-h-[90vh] flex flex-col";
 
   useEffect(() => {
     if (isOpen) {
@@ -57,7 +57,7 @@ const Modal: FC<ModalProps> = ({
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center overflow-y-auto modal z-99999 p-4">
-        {isFullscreen && (
+        {!isFullScreen && (
           <div className="fixed insert-0 w-full h-full bg-gray-400/50 backdrop-blur-lg" />
         )}
         <div
