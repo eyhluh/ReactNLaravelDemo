@@ -9,7 +9,7 @@ Route::controller(GenderController::class)->prefix('/gender')->group(function ()
     Route::get('/loadGender/{genderId}', 'getGender');
     Route::post('/storeGender', 'storeGender');
     Route::put('/updateGender/{gender}', 'updateGender');
-    Route::put('/destryGender/{gender}', 'destroyGender');
+    Route::put('/destroyGender/{gender}', 'destroyGender');
 });
 
 // Route::get('/user', function (Request $request) {
