@@ -66,18 +66,18 @@ const GenderList: FC<GenderListProps> = ({ refreshKey }) => {
                 >
                   Gender
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-start"
                 >
                   Action
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableHeader>
             <TableBody className="divide-y divide-gray-100 text-gray-500 text-sm">
               {loadingGenders ? (
                 <TableRow>
-                  <TableCell colSpan={3} className="px-4 py-3 text-center">
+                  <TableCell colSpan={2} className="px-4 py-3 text-center">
                     <Spinner size="md" />
                   </TableCell>
                 </TableRow>
