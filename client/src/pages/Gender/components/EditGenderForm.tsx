@@ -65,10 +65,7 @@ const EditGenderForm: FC<EditGenderFormProps> = ({ onGenderUpdated }) => {
       if (error.response && error.response.status === 422) {
         setErrors(error.response.data.errors);
       } else {
-        console.error(
-          "Unexpected server error occurred during updating gender: ",
-          error
-        );
+        console.error("Unexpected server error occurred", error);
       }
     } finally {
       setLoadingUpdate(false);

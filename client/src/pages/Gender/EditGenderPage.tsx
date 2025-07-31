@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import EditGenderForm from "./components/EditGenderForm";
+import { useToastMessage } from "../../hooks/useToastMessage";
+import ToastMessage from "../../components/ToastMessage/ToastMessage";
 
 const EditGenderPage = () => {
   useEffect(() => {

@@ -1,7 +1,10 @@
-import React from "react";
 import FloatingLabelInput from "../../../components/input/FloatingLabelInput";
 import BackButton from "../../../components/button/BackButton";
 import SubmitButton from "../../../components/button/SubmitButton";
+import { useEffect, useState, type FormEvent } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import GenderService from "../../../services/GenderService";
+import Spinner from "../../../components/Spinner/Spinner";
 
 const DeleteGenderForm = () => {
   const [loadingGet, setLoadingGet] = useState(false);
