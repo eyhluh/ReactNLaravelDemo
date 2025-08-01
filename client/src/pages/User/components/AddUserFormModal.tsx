@@ -11,25 +11,6 @@ interface AddUserFormModalProps {
 }
 
 const AddUserFormModal: FC<AddUserFormModalProps> = ({ isOpen, onClose }) => {
-  const genders = [
-    {
-      gender_id: "",
-      gender: "Select Gender",
-    },
-    {
-      gender_id: 1,
-      gender: "Male",
-    },
-    {
-      gender_id: 2,
-      gender: "Female",
-    },
-    {
-      gender_id: 3,
-      gender: "Prefer not to say",
-    },
-  ];
-
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} showCloseButton>
