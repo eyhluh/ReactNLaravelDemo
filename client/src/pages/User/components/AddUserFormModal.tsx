@@ -7,7 +7,7 @@ import CloseButton from "../../../components/button/CloseButton";
 import type { GenderColumns } from "../../../Interfaces/GenderColumns";
 import GenderService from "../../../services/GenderService";
 import type { UserFieldErrors } from "../../../Interfaces/UserFieldErrors";
-import UserService from "../../../services/UserServices";
+import UserService from "../../../services/UserService";
 
 interface AddUserFormModalProps {
   onUserAdded: (message: string) => void;
@@ -74,9 +74,8 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({
           res.status
         );
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      if (error.response && error.response === 422) {
+      if (error.response && error.response.status === 422) {
         setErrors(error.response.data.errors);
       } else {
         console.log(
