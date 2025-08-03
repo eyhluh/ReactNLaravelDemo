@@ -49,7 +49,7 @@ const EditUserFormModal: FC<EditUserFormModalProps> = ({
         middle_name: middleName,
         last_name: lastName,
         suffix_name: suffixName,
-        gender: gender,
+        gender_id: gender,
         birth_date: birthDate,
         username: username,
       };
@@ -71,7 +71,10 @@ const EditUserFormModal: FC<EditUserFormModalProps> = ({
         handleLoadGenders();
         refreshKey();
       } else {
-        console.error("Unexpected status error occured during updating user: ");
+        console.error(
+          "Unexpected status error occured during updating user: ",
+          res.status
+        );
       }
     } catch (error: any) {
       if (error.response && error.response.status === 422) {

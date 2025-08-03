@@ -72,7 +72,7 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({
         onUserAdded(res.data.message);
 
         handleLoadGenders();
-        refreshKey;
+        refreshKey();
       } else {
         console.error(
           "Unexpected status error occured during adding user:",

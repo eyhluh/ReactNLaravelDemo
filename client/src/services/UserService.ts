@@ -5,7 +5,7 @@ const UserService = {
         try{
             const response = await AxiosInstance.get('/user/loadUsers');
             return response;
-        }catch(error){
+        }   catch(error){
             throw error;
         }
     },
@@ -20,12 +20,12 @@ const UserService = {
 
     updateUser: async (userId: string | number, data: any) => {
         try{
-            const  response = await AxiosInstance.put(`/user/updateUser/${userId}`, data);
+            const response = await AxiosInstance.put(`/api/user/updateUser/${userId}`, data);
             return response;
-        } catch(error) {
-            throw error
+        }   catch(error) {
+            throw error;
         }
-    }
+    },
 };
 
 export default UserService;
