@@ -8,12 +8,12 @@ const AppSidebar = () => {
     {
       icon: "",
       path: "/",
-      name: "Gender List",
+      name: "Genders",
     },
     {
       icon: "",
       path: "/users",
-      name: "User List",
+      name: "Users",
     },
   ];
 
@@ -34,14 +34,14 @@ const AppSidebar = () => {
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white">
           <ul className="space-y-2 font-medium">
-            {menuItems.map((menuItem) => (
-              <li>
+            {menuItems.map((sidebarItem, index) => (
+              <li key={index}>
                 <Link
-                  to={menuItem.path}
+                  to={sidebarItem.path}
                   className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
                 >
-                  {menuItem.icon && menuItem.icon}
-                  <span className="ms-3">{menuItem.name}</span>
+                  {sidebarItem.icon && sidebarItem.icon}
+                  <span className="ms-3">{sidebarItem.name}</span>
                 </Link>
               </li>
             ))}
