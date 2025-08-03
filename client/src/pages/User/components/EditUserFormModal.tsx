@@ -4,11 +4,13 @@ import SubmitButton from "../../../components/button/SubmitButton";
 import FloatingLabelInput from "../../../components/input/FloatingLabelInput";
 import Modal from "../../../components/Modal";
 import FloatingLabelSelect from "../../../components/select/FloatingLabelSelect";
-import type { UserColumns } from "../../../Interfaces/UserColumns";
-import type { GenderColumns } from "../../../Interfaces/GenderColumns";
-import type { UserFieldErrors } from "../../../Interfaces/UserFieldErrors";
 import GenderService from "../../../services/GenderService";
 import UserService from "../../../services/UserService";
+import type {
+  UserColumns,
+  UserFieldErrors,
+} from "../../../Interfaces/UserInterfaces";
+import type { GenderColumns } from "../../../Interfaces/GenderInterfaces";
 
 interface EditUserFormModalProps {
   user: UserColumns | null;
@@ -49,7 +51,7 @@ const EditUserFormModal: FC<EditUserFormModalProps> = ({
         middle_name: middleName,
         last_name: lastName,
         suffix_name: suffixName,
-        gender_id: gender,
+        gender: gender,
         birth_date: birthDate,
         username: username,
       };
@@ -121,21 +123,23 @@ const EditUserFormModal: FC<EditUserFormModalProps> = ({
   }, [isOpen]);
 
   useEffect(() => {
-    if (user) {
-      setFirstName(user.first_name);
-      setMiddleName(user.middle_name ?? "");
-      setLastName(user.last_name);
-      setSuffixName(user.suffix_name ?? "");
-      setGender(user.gender.gender_id.toString());
-      setBirthDate(user.birth_date);
-      setUsername(user.username);
-    } else {
-      console.error(
-        "Unexpected user error occured during getting user details: ",
-        user
-      );
+    if (isOpen) {
+      if (user) {
+        setFirstName(user.first_name);
+        setMiddleName(user.middle_name ?? "");
+        setLastName(user.last_name);
+        setSuffixName(user.suffix_name ?? "");
+        setGender(user.gender.gender_id.toString());
+        setBirthDate(user.birth_date);
+        setUsername(user.username);
+      } else {
+        console.error(
+          "Unexpected user error occured during getting user details: ",
+          user
+        );
+      }
     }
-  }, [user]);
+  }, [isOpen, user]);
 
   return (
     <>

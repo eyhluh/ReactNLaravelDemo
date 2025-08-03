@@ -7,9 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "../../../components/table";
-import type { GenderColumns } from "../../../Interfaces/GenderColumns";
 import GenderService from "../../../services/GenderService";
 import Spinner from "../../../components/Spinner/Spinner";
+import type { GenderColumns } from "../../../Interfaces/GenderInterfaces";
 
 interface GenderListProps {
   refreshKey: boolean;

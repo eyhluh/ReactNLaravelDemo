@@ -2,10 +2,10 @@ import { useState, useEffect, type FormEvent, type FC } from "react";
 import BackButton from "../../../components/button/BackButton";
 import SubmitButton from "../../../components/button/SubmitButton";
 import FloatingLabelInput from "../../../components/input/FloatingLabelInput";
-import type { GenderFieldErrors } from "../../../Interfaces/GenderFieldErrors";
 import GenderService from "../../../services/GenderService";
 import { useParams } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner";
+import type { GenderFieldErrors } from "../../../Interfaces/GenderInterfaces";
 
 interface EditGenderFormProps {
   onGenderUpdated: (message: string) => void;

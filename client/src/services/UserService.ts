@@ -1,3 +1,4 @@
+import { data } from "react-router-dom";
 import AxiosInstance from "./AxiosInstance";
 
 const UserService = {
@@ -20,12 +21,21 @@ const UserService = {
 
     updateUser: async (userId: string | number, data: any) => {
         try{
-            const response = await AxiosInstance.put(`/api/user/updateUser/${userId}`, data);
+            const response = await AxiosInstance.put(`/user/updateUser/${userId}`, data);
             return response;
         }   catch(error) {
             throw error;
         }
     },
+
+    destroyUser: async (userId: string | number) => {
+        try{
+            const response = await AxiosInstance.put(`/user/destroyUser/${userId}`)
+            return response;
+        }   catch(error) {
+            throw error;
+        }
+    }
 };
 
 export default UserService;
