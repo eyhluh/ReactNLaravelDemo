@@ -1,9 +1,57 @@
+import { useEffect, useState, type FormEvent } from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { useHeader } from "../contexts/HeaderContext";
 import { useSidebar } from "../contexts/SidebarContext";
+import { useNavigate } from "react-router-dom";
 
 const AppHeader = () => {
   const { isOpen, toggleUserMenu } = useHeader();
   const { toggleSidebar } = useSidebar();
+  const { user, logout } = useAuth();
+
+  const navigate = useNavigate();
+
+  const [isloading, setIsLoading] = useState(false);
+
+  const handleLogout = async (e: FormEvent) => {
+    try {
+      e.preventDefault();
+
+      setIsLoading(true);
+
+      await logout();
+    } catch (error) {
+      console.error(
+        "Unexpected server error occured during logging user out: ",
+        error
+      );
+    } finally {
+      navigate("/"); // put here
+      setIsLoading(false);
+    }
+  };
+
+  const handleUserFullNameFormat = () => {
+    if (!user) return "";
+
+    let fullName = `${user.user.last_name}, ${user.user.first_name}`;
+
+    if (user.user.middle_name) {
+      fullName += `${user.user.middle_name.charAt(0)}.`;
+    }
+
+    if (user.user.suffix_name) {
+      fullName += `${user.user.suffix_name}`;
+    }
+
+    return fullName;
+  };
+
+  useEffect(() => {
+    if (user) {
+      handleUserFullNameFormat();
+    }
+  }, [user]);
 
   return (
     <>
@@ -76,24 +124,20 @@ const AppHeader = () => {
                 >
                   <div className="px-4 py-3" role="none">
                     <p className="text-sm text-gray-900" role="none">
-                      Ella Danielle Villeza
-                    </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate"
-                      role="none"
-                    >
-                      ella@email.com
+                      {handleUserFullNameFormat()}
                     </p>
                   </div>
                   <ul className="py-1" role="none">
                     <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-red-600 hover:bg-red-100"
+                      <button
+                        type="submit"
+                        className="block px-4 py-2 text-sm text-red-600 hover:bg-red-100 w-full text-start cursor-pointer disabled:cursor-not-allowed"
                         role="menuitem"
+                        onClick={handleLogout}
+                        disabled={isloading}
                       >
-                        Sign out
-                      </a>
+                        {isloading ? "Signing Out..." : "Sign Out"}
+                      </button>
                     </li>
                   </ul>
                 </div>

@@ -7,7 +7,7 @@ const AppSidebar = () => {
   const menuItems = [
     {
       icon: "",
-      path: "/",
+      path: "/genders",
       name: "Genders",
     },
     {

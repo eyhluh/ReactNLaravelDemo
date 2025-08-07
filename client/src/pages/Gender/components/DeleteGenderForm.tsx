@@ -47,7 +47,7 @@ const DeleteGenderForm = () => {
       const res = await GenderService.destroyGender(gender_id!);
 
       if (res.status === 200) {
-        navigate("/", { state: { message: res.data.message } });
+        navigate("/genders", { state: { message: res.data.message } });
       } else {
         console.error(
           "Unexpected status error occurred during deleting gender: ",
@@ -94,7 +94,7 @@ const DeleteGenderForm = () => {
             />
           </div>
           <div className="flex justify-end gap-2">
-            {!loadingDestroy && <BackButton label="Back" path="/" />}
+            {!loadingDestroy && <BackButton label="Back" path="/genders" />}
             <SubmitButton
               label="Delete Gender"
               className="bg-red-600 hover:bg-red-700"

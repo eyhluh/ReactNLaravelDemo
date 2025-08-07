@@ -1,10 +1,9 @@
-import { data } from "react-router-dom";
 import AxiosInstance from "./AxiosInstance";
 
 const UserService = {
-    loadUsers: async () => {
+    loadUsers: async (page: number, search: string) => {
         try{
-            const response = await AxiosInstance.get('/user/loadUsers');
+            const response = await AxiosInstance.get(search ? `/user/loadusers?page=${page}&search=${search}` : `/user/loadUsers?page=${page}`);
             return response;
         }   catch(error){
             throw error;
