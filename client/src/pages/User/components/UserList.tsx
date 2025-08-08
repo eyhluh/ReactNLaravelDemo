@@ -28,11 +28,17 @@ const UserList: FC<UserListProps> = ({
   const [usersTableCurrentPage, setUsersTableCurrentPage] = useState(1);
   const [usersTableLastPages, setUsersTableLastPages] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+
   const [search, setSearch] = useState("");
+  const [debounceSearch, setDebounceSearch] = useState("");
 
   const tableRef = useRef<HTMLDivElement>(null);
 
-  const handleLoadUsers = async (page: number, append = false) => {
+  const handleLoadUsers = async (
+    page: number,
+    append = false,
+    search: string
+  ) => {
     try {
       setloadingUsers(true);
 
@@ -73,7 +79,7 @@ const UserList: FC<UserListProps> = ({
       hasMore &&
       !loadingUsers
     ) {
-      handleLoadUsers(usersTableCurrentPage + 1, true);
+      handleLoadUsers(usersTableCurrentPage + 1, true, debounceSearch);
     }
   }, [hasMore, loadingUsers, usersTableCurrentPage]);
 
@@ -110,8 +116,20 @@ const UserList: FC<UserListProps> = ({
   }, [handleScroll]);
 
   useEffect(() => {
-    handleLoadUsers(usersTableCurrentPage, false);
-  }, [refreshKey, search]);
+    const timer = setTimeout(() => {
+      setDebounceSearch(search);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  useEffect(() => {
+    setUsers([]);
+    setUsersTableCurrentPage(1);
+    setHasMore(true);
+
+    handleLoadUsers(1, false, debounceSearch);
+  }, [refreshKey, debounceSearch]);
 
   return (
     <>
@@ -224,6 +242,15 @@ const UserList: FC<UserListProps> = ({
                     </TableCell>
                   </TableRow>
                 ))
+              ) : !loadingUsers && (users.length ?? 0) <= 0 ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="px-4 py-3 text-center font-medium"
+                  >
+                    No Records Found
+                  </TableCell>
+                </TableRow>
               ) : (
                 <TableRow>
                   <TableCell colSpan={6} className="px-4 py-3 text-center">

@@ -15,14 +15,20 @@ class UserController extends Controller
         $search = $request->input('search');
 
         $users = User::with(['gender'])
-            ->where('tbl_users.is_deleted', false);
+            ->leftJoin('tbl_genders', 'tbl_users.gender_id', '=', 'tbl_genders.gender_id')
+            ->where('tbl_users.is_deleted', false)
+            ->orderBy('tbl_users.last_name', 'asc')
+            ->orderBy('tbl_users.first_name', 'asc')
+            ->orderBy('tbl_users.middle_name', 'asc')
+            ->orderBy('tbl_users.suffix_name', 'asc');
 
         if ($search) {
             $users->where(function ($user) use ($search) {
                 $user->where('tbl_users.first_name', 'like', "%{$search}%")
                     ->orWhere('tbl_users.middle_name', 'like', "%{$search}%")
                     ->orWhere('tbl_users.last_name', 'like', "%{$search}%")
-                    ->orWhere('tbl_users.suffix_name', 'like', "%{$search}%");
+                    ->orWhere('tbl_users.suffix_name', 'like', "%{$search}%")
+                    ->orWhere('tbl_genders.gender', 'like', "%{$search}%");
             });
         }
 
